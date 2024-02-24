@@ -10,14 +10,16 @@
   </thead>
   <tbody>
     <!-- Write the line of EJS to iterate over movies using forEach -->
-    <%flights.forEach(function(f){%>
+    <% flights.forEach(function(f) { %>
     <tr>
       <td><%= f.airline %></td>
       <td><%= f.airport %></td>
       <td><%= f.flightNo %></td>
-      <td><%= f.departs %></td>
+      <td <% if (new Date(f.departs) < new Date()) { %>
+        style="color: red;" <% } %> > <%= f.departs %>
+      </td>
     </tr>
-    <%})%>
+    <% }) %>
     <!-- Close the forEach using EJS here -->
   </tbody>
 </table>
