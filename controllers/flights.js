@@ -18,7 +18,7 @@ async function newFlight(req, res) {
   departsDate += `-${dt.getDate().toString().padStart(2, "0")}T${dt
     .toTimeString()
     .slice(0, 5)}`;
-
+  console.log(departsDate);
   res.render("flights/new", { errMsg: "", departsDate });
 }
 
