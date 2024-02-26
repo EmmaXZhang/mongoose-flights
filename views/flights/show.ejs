@@ -11,8 +11,8 @@
 </section>
 <!-- break a line, change to another new line -->
 <!-- add new destination -->
-
-<h2>Desinations</h2>
+<hr />
+<h2 class="destinationHead">Desinations</h2>
 <form
   id="add-destination-form"
   method="POST"
@@ -41,9 +41,10 @@
       </tr>
     </thead>
     <tbody>
-      <% flight.destinations.forEach(function(d) { %>
-      <tr>
-        <!-- .toLocaleDateString() provides a more friendly date format -->
+      <!-- .toLocaleDateString() provides a more friendly date format -->
+      <% flight.destinations.sort((a, b) => a.arrival -
+      b.arrival).forEach(function(d) { %>
+      <tr class="destinationContent">
         <td><%= d.airport %></td>
         <td><%= d.arrival.toLocaleDateString() %></td>
       </tr>
