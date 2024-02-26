@@ -16,8 +16,10 @@
       <td><%= f.airport %></td>
       <td><%= f.flightNo %></td>
       <td <% if (new Date(f.departs) < new Date()) { %>
-        style="color: red;" <% } %> > <%= f.departs %>
+        style="color: red;" <% } %> > <%= f.departs.toLocaleDateString("en-GB")
+        %><%=f.departs.toLocaleTimeString()%>
       </td>
+      <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
     </tr>
     <% }) %>
     <!-- Close the forEach using EJS here -->

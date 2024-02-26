@@ -26,28 +26,23 @@ async function create(req, res) {
   try {
     //airline-string formatting
     req.body.airline = req.body.airline.trim();
-
-    //flight Num: 10-9999
-    if (
-      isNaN(req.body.flightNo) ||
-      req.body.flightNo < 10 ||
-      req.body.flightNo > 9999
-    ) {
-      return res.render("flights/new", {
-        errMsg: "Flight number must be a number between 10 and 9999.",
-      });
-    }
-
     //link req.body to database
     await Flight.create(req.body);
-    res.redirect("/flights/new");
+    res.redirect("/flights");
   } catch (err) {
+    console.log(err);
     res.render("flights/new", { errMsg: err.message });
   }
+}
+
+async function show(req, res) {
+  const flight = await Flight.findById(req.params.id);
+  res.render("flights/show", { flight });
 }
 
 module.exports = {
   index,
   new: newFlight,
   create,
+  show,
 };

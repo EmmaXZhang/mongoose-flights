@@ -21,7 +21,13 @@
       <option value="SAN">SAN</option>
     </select> </label
   ><br />
-  <label>Flight No (10-9999):<input type="number" name="flightNo" /> </label
+  <label
+    >Flight No (10-9999):<input
+      type="number"
+      placeholder="10-9999"
+      name="flightNo"
+      required
+    /> </label
   ><br />
   <label
     >Depart Date:<input
@@ -33,6 +39,6 @@
 
   <button type="submit">Add Flight</button>
 </form>
-<p><%= errMsg %></p>
+<p><%=errMsg%></p>
 
 <%- include('../partials/footer') %>
