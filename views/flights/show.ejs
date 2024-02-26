@@ -10,6 +10,52 @@
   <div><%=flight.departs%></div>
 </section>
 <!-- break a line, change to another new line -->
-<hr />
+<!-- add new destination -->
+
+<h2>Desinations</h2>
+<form
+  id="add-destination-form"
+  method="POST"
+  action="/flights/<%=flight._id%>/destinations"
+>
+  <label
+    >Airport:
+    <select name="airport">
+      <option value="AUS">AUS</option>
+      <option value="DFW">DFW</option>
+      <!-- //show by default : selected -->
+      <option value="DEN" selected>DEN</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+    </select>
+  </label>
+  <label>Arrival Date:<input type="datetime-local" name="arrival" /> </label>
+  <input type="submit" value="Add Desination" />
+
+  <%if(flight.destinations.length>0){%>
+  <table>
+    <thead>
+      <tr>
+        <th>Airport</th>
+        <th>Arrival</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flight.desinations.forEach(function(d) { %>
+      <tr>
+        <!-- .toLocaleDateString() provides a more friendly date format -->
+        <td><%= d.airport %></td>
+        <td><%= d.arrival.toLocaleDateString() %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <%}else{%>
+
+  <h3>No destinations Yet</h3>
+
+  <%}%>
+</form>
 
 <%- include('../partials/footer') %>
