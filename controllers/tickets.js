@@ -13,7 +13,7 @@ async function create(req, res) {
   const flight = await Flight.findById(req.params.id);
 
   try {
-    //link flight to ticket
+    //add flight.id to flight property, as in the create form, it didnt pass the data
     req.body.flight = flight._id;
     await Ticket.create(req.body);
   } catch (err) {
