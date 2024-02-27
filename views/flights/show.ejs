@@ -57,6 +57,26 @@
   <%}%>
   <hr />
   <a href="/flights/<%=flight._id%>/tickets/new">New Ticket</a>
+  <hr />
+  <h2>All Tickets</h2>
+  <hr />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tickets.forEach((t) => { %>
+      <tr>
+        <td><%= t.seat %></td>
+        <td>$<%= t.price %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </form>
 
 <%- include('../partials/footer') %>
