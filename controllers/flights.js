@@ -31,7 +31,15 @@ async function create(req, res) {
     res.redirect("/flights");
   } catch (err) {
     console.log(err);
-    res.render("flights/new", { errMsg: err.message });
+    const newFlightDepart = new Flight();
+    const dt = newFlightDepart.departs;
+    let departsDate = `${dt.getFullYear()}-${(dt.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}`;
+    departsDate += `-${dt.getDate().toString().padStart(2, "0")}T${dt
+      .toTimeString()
+      .slice(0, 5)}`;
+    res.render("flights/new", { errMsg: err.message, departsDate });
   }
 }
 
