@@ -10,7 +10,6 @@ async function newTicket(req, res) {
 }
 
 async function create(req, res) {
-  // res.redirect(`/flights/${req.params.id}/tickets/new`);
   try {
     //add flight.id to flight property, as in the create form, it didnt pass the data
     req.body.flight = req.params.id;
